@@ -25,8 +25,16 @@ export function getPageHtml(page: Page, selector = "body") {
       return result ? result.textContent || "" : "";
     } else {
       // Handle as a CSS selector
-      const el = document.querySelector(selector) as HTMLElement | null;
-      return el?.innerText || "";
+      document.querySelectorAll(".bbCodeQuote").forEach(el => el.remove());
+      const el = document.querySelectorAll(selector) as NodeListOf<HTMLElement>;
+
+      let result: string[] = [];
+
+      el.forEach((element: HTMLElement) => {
+        result.push(element.innerText as string);
+      });
+
+      return result;
     }
   }, selector);
 }
