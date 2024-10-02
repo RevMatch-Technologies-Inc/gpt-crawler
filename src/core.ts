@@ -25,7 +25,7 @@ export function getPageHtml(page: Page, selector = "body") {
       return result ? result.textContent || "" : "";
     } else {
       // Handle as a CSS selector
-      document.querySelectorAll(".bbCodeQuote").forEach(el => el.remove());
+      document.querySelectorAll(".bbCodeQuote").forEach((el) => el.remove());
       const el = document.querySelectorAll(selector) as NodeListOf<HTMLElement>;
 
       let result: string[] = [];
